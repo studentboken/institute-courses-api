@@ -49,7 +49,7 @@ class BTH extends Source {
           const title = linkTag.attr('title').trim();
           const split = title.split(' ');
           course.name = split.slice(0, split.length - 2).join(' ');
-          course.other.points = Number(split.slice(-2, -1));
+          course.other.points = Number(split.slice(-2, -1)[0].replace(',', '.'));
           const href = linkTag.attr('href');
           course.page = 'http://edu.bth.se/utbildning/' + href;
           course.other.applicationCode = href.match(/KtAnmKod=([^&"]+)/)[1];
