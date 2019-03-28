@@ -1,4 +1,10 @@
+#! /usr/bin/env node
+
+const path = require('path');
+const fs = require('fs');
+
 const debug = require('debug')('course-plans:app');
+const yargs = require('yargs');
 
 const sources = require('./sources');
 
@@ -11,7 +17,7 @@ const MINIMUM_DELAY = 100;
 const MAXIMUM_DELAY = 1000;
 // The amount of courses to fetch from each source (0 means all)
 // Rounds up to nearest batch
-const COURSES_TO_FETCH = 10;
+const COURSES_TO_FETCH = 0;
 
 function wait(min, max) {
   return new Promise(resolve => {
@@ -40,7 +46,10 @@ async function fetchCourses(source) {
   return courses;
 }
 
-async function main() {
+async function main(argv) {
+  if (argv.debug)
+    require('debug').enable('course-plans:*');
+
   const batches = [];
   for (let i = 0; i < sources.length; i += PARALLEL_SOURCES)
     batches.push(sources.slice(i, i + PARALLEL_SOURCES));
@@ -57,7 +66,22 @@ async function main() {
       courses.push(...result);
   }
 
-  console.log(courses);
+  if (argv.output) {
+    debug('Writing results to file');
+    fs.writeFileSync(argv.output, JSON.stringify(courses, null, 2));
+  } else {
+    console.log(JSON.stringify(courses, null, 2));
+  }
 }
 
-main();
+// Parse command line options and run main
+yargs
+  .usage('Usage: $0 <options>')
+  .epilogue('A tool to fetch available courses from various institutes.')
+  .version('version', require('../package.json').version)
+  .option('output', {alias: 'o', describe: 'Path to the output file'})
+  .option('d', {alias: 'debug', type: 'boolean', describe: 'Run in debugging mode'})
+  .example('course-plans --help', 'Show this help page')
+  .example('course-plans --output courses.json')
+  .recommendCommands()
+  .command('$0', 'Fetch the courses', () => {}, main).parse();

@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Fetch and parse course plans from various institutes",
   "main": "index.js",
+  "bin": {
+    "course-plans": "src/index.js"
+  },
   "scripts": {
     "dev": "DEBUG=course-plans:* node src/index.js",
     "start": "DEBUG=course-plans:* node src/index.js",
@@ -18,7 +21,8 @@
     "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.2",
     "debug": "^4.1.1",
-    "iconv-lite": "^0.4.24"
+    "iconv-lite": "^0.4.24",
+    "yargs": "^13.2.2"
   },
   "devDependencies": {
     "ava": "^1.4.1",
