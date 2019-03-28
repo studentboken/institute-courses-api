@@ -16,7 +16,9 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
-    "cheerio": "^1.0.0-rc.2"
+    "cheerio": "^1.0.0-rc.2",
+    "debug": "^4.1.1",
+    "iconv-lite": "^0.4.24"
   },
   "devDependencies": {
     "ava": "^1.4.1",
