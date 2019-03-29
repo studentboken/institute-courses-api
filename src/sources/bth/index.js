@@ -2,6 +2,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const debug = require('debug')('course-plans:bth');
 const iconv = require('iconv-lite');
+const isISBN = require('is-isbn').validate;
 
 const Source = require('../source');
 
@@ -20,16 +21,18 @@ class BTH extends Source {
 
     $('.KPInnehall').each((_, element) => {
       const text = $(element).text().trim();
-      const literature = text.match(/ISBN ?([0-9-]{13,17})/gi);
-      if (literature) {
-        course.literature = literature.map(x => x.substr(5).replace(/-/g, ''))
-          .reduce((res, x) => {
-            if (!res.includes(x))
-              res.push(x);
-            return res;
-          }, []);
-      }
+      // Assume that no other text will follow the same format (none seems to do so)
+      const books = text.match(/[0-9-]{9,17}x?/gi);
+      if (books)
+        course.books = [...course.books, ...books.map(x => x.replace(/-/g, ''))];
     });
+
+    // Remove duplicates and faulty codes
+    course.books = course.books.reduce((res, x) => {
+      if (!res.includes(x))
+        res.push(x);
+      return res;
+    }, []).filter(x => isISBN(x));
 
     $('.utb_faktaspalt_rubrik').each((_, element) => {
       const header = $(element);
@@ -68,6 +71,7 @@ class BTH extends Source {
         name: null, // Name of the course
         url: null, // URL to the course page
         code: null, // The course code, such as 'MA1445'
+        books: [], // Book ISBNs included in the course
         source: 'bth'
       };
 
@@ -93,10 +97,6 @@ class BTH extends Source {
     });
 
     return courses;
-  }
-
-  async parseCoursePlan(source) {
-
   }
 }
 

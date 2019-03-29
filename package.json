@@ -22,6 +22,7 @@
     "cheerio": "^1.0.0-rc.2",
     "debug": "^4.1.1",
     "iconv-lite": "^0.4.24",
+    "is-isbn": "^1.1.0",
     "yargs": "^13.2.2"
   },
   "devDependencies": {
