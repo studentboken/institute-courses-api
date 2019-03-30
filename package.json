@@ -1,14 +1,14 @@
 {
-  "name": "course-plans",
-  "version": "0.0.1",
-  "description": "Fetch and parse course plans from various institutes",
+  "name": "institute-courses-api",
+  "version": "1.0.0",
+  "description": "A fully async API written in ES6 for fetching courses from various sources",
   "main": "index.js",
   "bin": {
-    "course-plans": "src/index.js"
+    "institute-courses-api": "src/index.js"
   },
   "scripts": {
-    "dev": "DEBUG=course-plans:* node src/index.js",
-    "start": "DEBUG=course-plans:* node src/index.js",
+    "dev": "DEBUG=institute-courses-api:* node src/index.js",
+    "start": "DEBUG=institute-courses-api:* NODE_ENV=production node src/index.js",
     "lint": "xo",
     "test": "ava",
     "coverage": "nyc ava -t",

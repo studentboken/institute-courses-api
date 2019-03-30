@@ -77,11 +77,11 @@ async function main(argv) {
 // Parse command line options and run main
 yargs
   .usage('Usage: $0 <options>')
-  .epilogue('A tool to fetch available courses from various institutes.')
+  .epilogue('A tool for fetching courses from various institutes.')
   .version('version', require('../package.json').version)
   .option('output', {alias: 'o', describe: 'Path to the output file'})
   .option('d', {alias: 'debug', type: 'boolean', describe: 'Run in debugging mode'})
-  .example('course-plans --help', 'Show this help page')
-  .example('course-plans --output courses.json')
+  .example('institute-courses-api --help', 'Show this help page')
+  .example('institute-courses-api --output courses.json')
   .recommendCommands()
-  .command('$0', 'Fetch the courses', () => {}, main).parse();
+  .command('$0', 'Fetch courses', () => {}, main).parse();
