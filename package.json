@@ -15,7 +15,11 @@
     "check-duplicate-code": "jsinspect -t 20 src",
     "build": "./build.sh"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/studentboken/institute-courses-api.git"
+  },
+  "author": "Alex Gustafsson",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
