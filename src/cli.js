@@ -47,7 +47,7 @@ yargs
   .option('maximum-delay', {describe: 'The maximum number of milliseconds to wait between requests', default: 1000})
   .option('courses-to-fetch', {alias: 'n', describe: 'The amount of courses to fetch from each source (0 means all). Rounds up to nearest batch', default: 0})
   .option('output', {alias: 'o', describe: 'Path to the output file'})
-  .option('d', {alias: 'debug', type: 'boolean', describe: 'Run in debugging mode'})
+  .option('debug', {alias: 'd', type: 'boolean', describe: 'Run in debugging mode'})
   .example('institute-courses-api --help', 'Show this help page')
   .example('institute-courses-api --output courses.json')
   .recommendCommands()

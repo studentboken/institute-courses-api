@@ -7,8 +7,8 @@
     "institute-courses-api": "src/cli.js"
   },
   "scripts": {
-    "dev": "DEBUG=institute-courses-api:* node src/index.js",
-    "start": "DEBUG=institute-courses-api:* NODE_ENV=production node src/index.js",
+    "dev": "DEBUG=institute-courses-api:* node src/cli.js",
+    "start": "NODE_ENV=production node src/cli.js",
     "lint": "xo",
     "test": "ava",
     "coverage": "nyc ava -t",
