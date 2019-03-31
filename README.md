@@ -90,15 +90,16 @@ const {
 
 ```JavaScript
 /**
-* Search asynchronously for a query using sensible source priority.
-* @param {String} query - The query to search for.
-* @param {Object} options - Optional options.
-* @param {Boolean} options.fetchAll - Fetch all search results. Defaults to false.
-* @param {Boolean} options.searchAllSources - Search all sources. Defaults to false.
-* @param {Number} options.searchResults - Number of search results to include. Is not guaranteed to be honoured. Defaults to 0 (predefined).
-* @returns {Array} Array of books.
+* Fetch courses from all sources asynchronously.
+* @param {Source} source - The source (institute) to fetch courses from.
+* @param {Object} options - Optional options
+* @param {Number} options.parallelRequests - The number of requests to send simultaneously.
+* @param {Number} options.minimumDelay - The minimum number of milliseconds to wait between requests.
+* @param {Number} options.maximumDelay - The maximum number of milliseconds to wait between requests.
+* @param {Number} options.coursesToFetch - The amount of courses to fetch from each source (0 means all). Rounds up to nearest batch.
+* @returns {Array} Array of courses.
 */
-async function search(query, options ) {
+async function fetchCourses(source, options) {
   ...
 }
 ```
