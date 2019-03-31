@@ -4,7 +4,7 @@
   "description": "A fully async API written in ES6 for fetching courses from various sources",
   "main": "index.js",
   "bin": {
-    "institute-courses-api": "src/index.js"
+    "institute-courses-api": "src/cli.js"
   },
   "scripts": {
     "dev": "DEBUG=institute-courses-api:* node src/index.js",

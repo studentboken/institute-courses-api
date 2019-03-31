@@ -1,10 +1,11 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
-const debug = require('debug')('course-plans:bth');
+const debug = require('debug')('institute-courses-api:bth');
 const iconv = require('iconv-lite');
 const isISBN = require('is-isbn').validate;
 
 const Source = require('../source');
+const Course = require('../../course');
 
 const COURSE_PLANS_URL = 'http://edu.bth.se/utbildning/utb_sok_resultat.asp?KtTermin=fore&KtTermin=inne&KtTermin=nast&PtStartTermin=fore&PtStartTermin=inne&PtStartTermin=nast';
 
@@ -60,20 +61,7 @@ class BTH extends Source {
       if (row.children().length !== 4)
         return;
 
-      const course = {
-        other: {
-          appliable: false, // Whether or not the course can be applied to
-          applicationCode: null, // The course code to apply to on antagning.se
-          start: null, // The semester the course starts (such as 'VT-19')
-          points: null, // The amount of "Högskolepoäng (HP)" the course consists of
-          topic: null // The topic of the course, such as 'Mathematics'
-        },
-        name: null, // Name of the course
-        url: null, // URL to the course page
-        code: null, // The course code, such as 'MA1445'
-        books: [], // Book ISBNs included in the course
-        source: 'bth'
-      };
+      const course = new Course();
 
       row.children().each((columnIndex, element) => {
         const column = $(element);
