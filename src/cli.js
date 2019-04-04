@@ -21,7 +21,7 @@ async function main(argv) {
   for (const batch of batches) {
     debug(`Processing batch of ${batch.length} sources`);
 
-    const results = await Promise.all(batch.map(Source => fetchCourses(new Source()))); /* eslint no-await-in-loop: "off" */
+    const results = await Promise.all(batch.map(Source => fetchCourses(new Source(), argv))); /* eslint no-await-in-loop: "off" */
     const entries = results.reduce((res, x) => res + x.length, 0);
     debug(`Retrieved ${entries} entries from ${batch.length} sources`);
     for (const result of results)
