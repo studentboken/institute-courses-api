@@ -1,6 +1,6 @@
 {
   "name": "institute-courses-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A fully async API written in ES6 for fetching courses from various sources",
   "main": "index.js",
   "bin": {
