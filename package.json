@@ -21,19 +21,19 @@
   },
   "author": "Alex Gustafsson",
   "license": "ISC",
-  "dependencies": {
-    "axios": "^0.18.0",
-    "cheerio": "^1.0.0-rc.2",
-    "debug": "^4.1.1",
-    "iconv-lite": "^0.4.24",
-    "is-isbn": "^1.1.0",
-    "yargs": "^13.2.2"
-  },
   "devDependencies": {
-    "ava": "^1.4.1",
+    "ava": "^2.2.0",
     "jsinspect": "^0.12.7",
-    "nyc": "^13.3.0",
+    "nyc": "^14.1.1",
     "xo": "^0.24.0"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "cheerio": "^1.0.0-rc.3",
+    "debug": "^4.1.1",
+    "iconv-lite": "^0.5.0",
+    "is-isbn": "^1.1.0",
+    "yargs": "^13.3.0"
   },
   "xo": {
     "space": 2,
