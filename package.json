@@ -20,7 +20,7 @@
     "url": "git://github.com/studentboken/institute-courses-api.git"
   },
   "author": "Alex Gustafsson",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "ava": "^2.2.0",
     "jsinspect": "^0.12.7",
