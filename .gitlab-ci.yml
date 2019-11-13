@@ -22,7 +22,6 @@ checkDependencies:
     paths:
       - build/badges/*.svg
     when: always
-  allow_failure: true
   only:
     - schedules
 
@@ -34,7 +33,6 @@ lint:
 checkDuplicateCode:
   stage: staticAnalysis
   script: ci/check-duplicate-code.sh
-  allow_failure: true
 
 test:
   stage: test
@@ -43,4 +41,3 @@ test:
 coverage:
   stage: test
   script: ./ci/coverage.sh
-  allow_failure: true
